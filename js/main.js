@@ -1,3 +1,3 @@
-import { createPhotos } from './data';
+import { createMinPicList } from './miniature-pictures.js';
 
-createPhotos();
+createMinPicList();

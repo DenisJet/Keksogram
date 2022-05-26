@@ -43,7 +43,7 @@ const createComments = () => {
     comments.push({
       id: getRandomNumber(1, MAX_USERS_COUNT),
       avatar:
-        'img/avatar' +
+        'img/avatar-' +
         getRandomNumber(AvatarNumber.min, AvatarNumber.max) +
         '.svg',
       message: getRandomArrayElement(MESSAGES),
@@ -66,4 +66,6 @@ const createPhotos = () => {
   }
 };
 
-export {createPhotos};
+createPhotos();
+
+export default photos;
