@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <link rel="stylesheet" href="css/normalize.css" />
     <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="/nouislider/nouislider.css" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <title>Кекстаграм</title>
   </head>
@@ -56,6 +57,7 @@
               class="img-upload__form"
               id="upload-select-image"
               method="post"
+              action=" https://23.javascript.pages.academy/kekstagram"
               enctype="multipart/form-data"
               autocomplete="off"
             >
@@ -236,6 +238,7 @@
                   <fieldset class="img-upload__text text">
                     <input
                       class="text__hashtags"
+                      type="text"
                       name="hashtags"
                       placeholder="#ХэшТег"
                     />
@@ -243,6 +246,7 @@
                       class="text__description"
                       name="description"
                       placeholder="Ваш комментарий..."
+                      maxlength="140"
                     ></textarea>
                   </fieldset>
 
@@ -450,5 +454,6 @@
     </template>
 
     <script src="/js/main.js" type="module" defer></script>
+    <script src="/nouislider/nouislider.js"></script>
   </body>
 </html>

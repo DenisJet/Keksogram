@@ -22,4 +22,15 @@ const getRandomArrayElement = (array) => {
   return array[getRandomNumber(0, array.length - 1)];
 };
 
-export {getRandomNumber, isStringMaxLength, getRandomArrayElement};
+// Проверка на нажатую клавишу escape
+
+const Keys = {
+  ESC: 'Esc',
+  ESCAPE: 'Escape',
+};
+
+const isEscEvent = (evt) => {
+  return evt.key === Keys.ESCAPE || evt.key === Keys.ESC;
+};
+
+export {getRandomNumber, isStringMaxLength, getRandomArrayElement, isEscEvent};

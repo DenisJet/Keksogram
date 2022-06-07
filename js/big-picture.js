@@ -1,3 +1,5 @@
+import { isEscEvent } from './util.js';
+
 const bigPic = document.querySelector('.big-picture');
 const body = document.querySelector('body');
 const bigPicCancelElement = bigPic.querySelector('.big-picture__cancel');
@@ -45,7 +47,7 @@ const showBigPic = (pic) => {
   bigPic.querySelector('.social__caption').textContent = pic.description;
 
   document.addEventListener('keydown', (evt) => {
-    if (evt.key === ('Escape' || 'Esc')) {
+    if (isEscEvent(evt)) {
       evt.preventDefault();
       bigPic.classList.add('hidden');
       body.classList.remove('modal-open');
