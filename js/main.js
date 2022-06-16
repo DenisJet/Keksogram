@@ -1,5 +1,3 @@
-import { createMinPicList } from './miniature-pictures.js';
-import './img-upload-overlay.js';
-import './img-upload-validation.js';
+import {getData} from './fetch.js';
 
-createMinPicList();
+getData();

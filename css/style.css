@@ -1416,3 +1416,7 @@ main {
 .hidden {
   display: none;
 }
+
+.img-upload__form:invalid .text__hashtags {
+  border: 2px solid red;
+}
