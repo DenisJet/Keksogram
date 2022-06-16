@@ -1,4 +1,3 @@
-import photos from './data.js';
 import { showBigPic } from './big-picture.js';
 
 const minPicList = document.querySelector('.pictures');
@@ -19,10 +18,10 @@ const createMinPic = (pic) => {
   return newMinPic;
 };
 
-const createMinPicList = () => {
+const createMinPicList = (pictures) => {
   const newMinPicListFragment = document.createDocumentFragment();
 
-  photos.forEach((pic) => {
+  pictures.forEach((pic) => {
     newMinPicListFragment.appendChild(createMinPic(pic));
   });
 

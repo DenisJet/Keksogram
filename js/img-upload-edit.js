@@ -16,6 +16,8 @@ const effectSliderElement = document.querySelector('.effect-level__slider');
 const effectLevelValueInput = document.querySelector('.effect-level__value');
 const effectLevel = document.querySelector('.effect-level');
 const effectNoneInput = document.querySelector('#effect-none');
+const hashtagsInput = document.querySelector('.text__hashtags');
+const descriptionInput = document.querySelector('.text__description');
 
 // масштабирование изображения
 
@@ -98,6 +100,8 @@ const resetEditor = () => {
   imgPreview.className = '';
   imgPreview.style.filter = '';
   effectNoneInput.checked = true;
+  hashtagsInput.value = '';
+  descriptionInput.value = '';
 }
 
 // Экспорт

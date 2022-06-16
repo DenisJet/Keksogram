@@ -38,6 +38,20 @@ const renderComments = (comments) => {
 
 // функция вывода большой картинки
 
+const closeBigPic = () => {
+  bigPic.classList.add('hidden');
+  body.classList.remove('modal-open');
+  socialCommentsList.innerHTML = '';
+  bigPicCancelElement.removeEventListener('click', closeBigPic);
+}
+
+const onBigPicEscKeyDown = (evt) => {
+  if (isEscEvent(evt)) {
+    closeBigPic()
+    document.removeEventListener('keydown', onBigPicEscKeyDown);
+  }
+}
+
 const showBigPic = (pic) => {
   body.classList.add('modal-open');
   bigPic.querySelector('.big-picture__img > img').src = pic.url;
@@ -46,22 +60,9 @@ const showBigPic = (pic) => {
   renderComments(pic.comments);
   bigPic.querySelector('.social__caption').textContent = pic.description;
 
-  document.addEventListener('keydown', (evt) => {
-    if (isEscEvent(evt)) {
-      evt.preventDefault();
-      bigPic.classList.add('hidden');
-      body.classList.remove('modal-open');
-      socialCommentsList.innerHTML = '';
-      document.removeEventListener('keydown');
-    }
-  });
+  document.addEventListener('keydown', onBigPicEscKeyDown)
 
-  bigPicCancelElement.addEventListener('click', () => {
-    bigPic.classList.add('hidden');
-    body.classList.remove('modal-open');
-    socialCommentsList.innerHTML = '';
-    bigPicCancelElement.removeEventListener('click');
-  });
+  bigPicCancelElement.addEventListener('click', closeBigPic);
 
   bigPic.classList.remove('hidden');
 };
