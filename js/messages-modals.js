@@ -1,20 +1,27 @@
 import { isEscEvent } from './util.js';
 
-// Сообщения об отправке
-
 const successMessageTemplate = document.querySelector('#success').content;
 const errorMessageTemplate = document.querySelector('#error').content;
 const body = document.querySelector('body');
 
-const onSuccessMessageEscKeydown = (evt) => {
-  if (isEscEvent(evt)) {
-    removeSuccessMessage();
+const removeMessage = (messageElement) => {
+  document.querySelector(messageElement).remove();
+}
+
+// Сообщения об  успешной отправке
+
+const onDocumentClickRemoveSuccessMessage = (evt) => {
+  if (!document.querySelector('.success__inner').contains(evt.target)) {
+    removeMessage('.success');
+    document.removeEventListener('click', onDocumentClickRemoveSuccessMessage)
   }
 }
 
-const removeSuccessMessage = () => {
-  document.querySelector('.success').remove();
-  document.removeEventListener('keydown', onSuccessMessageEscKeydown);
+const onSuccessMessageEscKeydown = (evt) => {
+  if (isEscEvent(evt)) {
+    removeMessage('.success');
+    document.removeEventListener('keydown', onSuccessMessageEscKeydown);
+  }
 }
 
 const successMessageShow = () => {
@@ -23,29 +30,30 @@ const successMessageShow = () => {
   const successButton = successMessage.querySelector('.success__button');
 
   successButton.addEventListener('click', () => {
-    removeSuccessMessage();
+    removeMessage('.success');
   });
 
-  document.addEventListener('click', (evt) =>  {
-    if (!document.querySelector('.success__inner').contains(evt.target)) {
-      removeSuccessMessage();
-    }
-  })
+  document.addEventListener('click', onDocumentClickRemoveSuccessMessage);
 
   document.addEventListener('keydown', onSuccessMessageEscKeydown);
 
   body.appendChild(successMessage);
 }
 
-const onErorrMessageEscKeydown = (evt) => {
-  if (isEscEvent(evt)) {
-    removeErrorMessage();
+// сообщение об ошибке
+
+const onDocumentClickRemoveErrorMessage = (evt) => {
+  if (!document.querySelector('.success__inner').contains(evt.target)) {
+    removeMessage('.success');
+    document.removeEventListener('click', onDocumentClickRemoveErrorMessage)
   }
 }
 
-const removeErrorMessage = () => {
-  document.querySelector('.error').remove();
-  document.removeEventListener('keydown', onErorrMessageEscKeydown);
+const onErrorMessageEscKeydown = (evt) => {
+  if (isEscEvent(evt)) {
+    removeMessage('.error');
+    document.removeEventListener('keydown', onErrorMessageEscKeydown);
+  }
 }
 
 const errorMessageShow = () => {
@@ -54,16 +62,12 @@ const errorMessageShow = () => {
   const errorButton = errorMessage.querySelector('.error__button');
 
   errorButton.addEventListener('click', () => {
-    removeErrorMessage();
+    removeMessage('.error');
   });
 
-  document.addEventListener('click', (evt) =>  {
-    if (!document.querySelector('.error__inner').contains(evt.target)) {
-      removeErrorMessage();
-    }
-  })
+  document.addEventListener('click', onDocumentClickRemoveErrorMessage);
 
-  document.addEventListener('keydown', onErorrMessageEscKeydown);
+  document.addEventListener('keydown', onErrorMessageEscKeydown);
 
   body.appendChild(errorMessage);
 }
